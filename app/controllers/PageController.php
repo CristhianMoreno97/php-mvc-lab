@@ -1,20 +1,24 @@
 <?php
 
-    class PageController {
+    class PageController extends Controller{
         
         public function home(){
-            echo 'page home';
+            $this->render('page/home');
         }
 
         public function list(){
-            echo 'page list';
+            $this->render('page/list');
         }
 
         public function modify(){
-            echo 'page modify';
+            $this->render('page/modify');
         }
 
         public function new(){
-            echo 'page new';
+            $this->render('page/new');
+        }
+
+        public function delete(){
+            $this->render('page/delete');
         }
     }
