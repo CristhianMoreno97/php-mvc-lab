@@ -27,7 +27,8 @@
         }
 
         public function run() {
-            $controller = new $this->controller;
+            $database = new Database();
+            $connection = $database->getConnection();
             $controller->{$this->method}();
         }
     }
