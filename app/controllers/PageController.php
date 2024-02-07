@@ -2,6 +2,10 @@
 
     class PageController extends Controller{
         
+        public function __construct(PDO $connection) {
+            
+        }        
+
         public function home(){
             $this->render('page/home');
         }

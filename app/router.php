@@ -29,6 +29,7 @@
         public function run() {
             $database = new Database();
             $connection = $database->getConnection();
+            $controller = new $this->controller($connection);
             $controller->{$this->method}();
         }
     }
