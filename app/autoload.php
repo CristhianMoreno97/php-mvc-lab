@@ -1,4 +1,5 @@
 <?php
+    require_once(__DIR__ . '/helpers/common.php');
     require_once(__DIR__ . '/core/Controller.php');
     require_once(__DIR__ . '/core/Orm.php');
     require_once(__DIR__ . '/services/Database.php');
