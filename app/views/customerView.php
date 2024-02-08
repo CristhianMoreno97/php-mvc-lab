@@ -1,4 +1,4 @@
-<a href=""><button>New</button></a>
+<a href="<?php echo URL_ROOT ?>/customer/new"><button>New</button></a>
 <table border="1">
     <thead>
         <tr>
