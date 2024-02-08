@@ -60,7 +60,7 @@
             $query = trim($query, ",") . ") VALUES ( ";
 
             foreach ($data as $key => $value) {
-                $query .= ":{$value},";
+                $query .= ":{$key},";
             }
 
             $query = trim($query, ",") . ")";
