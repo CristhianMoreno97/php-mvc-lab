@@ -34,10 +34,10 @@
             $query = "UPDATE {$this->table} SET ";
             
             foreach ($data as $key => $value) {
-                $query .= "{$key} = :{$value}, ";
+                $query .= "{$key} = :{$key},";
             }
             
-            $query = trim($query, ",");
+            $query = rtrim($query, ",");
             $query .= " WHERE id = :id";
             
             $stmt = $this->db->prepare($query);
