@@ -54,4 +54,39 @@
             $res->result = $customers;
             echo json_encode($res);
         }
+
+        public function edit() {
+            $id = $_GET['id'];
+            $customer = $this->customerModel->getById($id);
+            $this->render('newCustomer', ['customer' => $customer]);
+        }
+
+        public function update() {
+            $res = new Result();
+            $data = file_get_contents('php://input');
+            $body = json_decode($data, true);
+
+            if (!isset($body['id'], $body['firstName'], $body['lastName'], $body['address'])) {
+                $res->success = false;
+                $res->message = 'Invalid data';
+                echo json_encode($res);
+                return;
+            }
+
+            try {
+                $this->customerModel->updateById($body['id'], [
+                    'first_name' => $body['firstName'],
+                    'last_name' => $body['lastName'],
+                    'address' => $body['address'],
+                ]);
+
+                $res->success = true;
+                $res->message = 'Customer updated';
+            } catch (Exception $e) {
+                $res->success = false;
+                $res->message = $e->getMessage();
+            }
+
+            echo json_encode($res);
+        }
     }
