@@ -89,4 +89,29 @@
 
             echo json_encode($res);
         }
+
+        public function delete() {
+            $res = new Result();
+            $data = file_get_contents('php://input');
+            $body = json_decode($data, true);
+            
+            if (!isset($body['id'])) {
+                $res->success = false;
+                $res->message = 'Invalid data';
+                echo json_encode($res);
+                return;
+            }
+
+            try {
+                $this->customerModel->deleteById($body['id']);
+
+                $res->success = true;
+                $res->message = 'Customer deleted';
+            } catch (Exception $e) {
+                $res->success = false;
+                $res->message = $e->getMessage();
+            }
+            
+            echo json_encode($res);
+        }
     }
