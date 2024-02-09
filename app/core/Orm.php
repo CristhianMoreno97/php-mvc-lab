@@ -24,7 +24,7 @@
             return $stmt->fetch();
         }
 
-        public function deleteById() {
+        public function deleteById($id) {
             $stmt = $this->db->prepare("DELETE FROM {$this->table} WHERE id = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
