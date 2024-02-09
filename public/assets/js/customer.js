@@ -14,7 +14,9 @@ async function listCustomer() {
             <td>${item.last_name}</td>
             <td>${item.address}</td>
             <td>
-                <button>Editar</button>
+                <a href="http://localhost/php_router/public/customer/edit/?id=${item.id}">
+                    <button>Editar</button>
+                </a>
                 <button>Eliminar</button>
             </td>
             </tr>`)
