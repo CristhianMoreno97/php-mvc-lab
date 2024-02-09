@@ -10,17 +10,19 @@ async function customerFormSubmit () {
     customer.firstName = document.getElementById('first-name').value
     customer.lastName = document.getElementById('last-name').value
     customer.address = document.getElementById('address').value
+    customer.id = document.getElementById('id').value
 
-    let response = await fetch('http://localhost/php_router/public/customer/create', {
+    let path = customer.id ? 'update' : 'create';
+
+    let response = await fetch('http://localhost/php_router/public/customer/' + path, {
         method: 'POST',
         body: JSON.stringify(customer)
     })
     let responseData = await response.json()
 
     if (responseData.success) {
-        alert('Cliente creado con éxito')
-        customerForm.reset()
+        alert('Operación exitosa')
     } else {
-        alert('Error al crear cliente')
+        alert('Error en la operación')
     }
 }
